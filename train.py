@@ -8,7 +8,7 @@ from datasets.llie_dataset import LLIE_Dataset
 from models.lsd_tf_former import LSD_TFFormer
 from utils.checkpoint import save_checkpoint, load_checkpoint
 
-train_dataset = LLIE_Dataset(TRAIN_LOW, TRAIN_HIGH, IMG_SIZE)
+train_dataset = LLIE_Dataset(TRAIN_LOW, TRAIN_HIGH)
 train_loader = DataLoader(train_dataset, batch_size=BATCH_SIZE, shuffle=True)
 
 model = LSD_TFFormer().to(DEVICE)

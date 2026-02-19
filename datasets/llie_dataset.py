@@ -4,7 +4,7 @@ from torchvision import transforms
 from PIL import Image
 
 class LLIE_Dataset(Dataset):
-    def __init__(self, low_dir, high_dir, img_size=256):
+    def __init__(self, low_dir, high_dir):
         self.low_dir = low_dir
         self.high_dir = high_dir
         self.files = sorted([
@@ -12,8 +12,8 @@ class LLIE_Dataset(Dataset):
             if f.lower().endswith((".png", ".jpg", ".jpeg"))
         ])
 
+        # ❌ Removed Resize
         self.transform = transforms.Compose([
-            transforms.Resize((img_size, img_size)),
             transforms.ToTensor()
         ])
 
@@ -27,4 +27,3 @@ class LLIE_Dataset(Dataset):
         high = Image.open(os.path.join(self.high_dir, filename)).convert("RGB")
 
         return self.transform(low), self.transform(high)
-

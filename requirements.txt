@@ -1,3 +1,6 @@
 torch
 torchvision
 pillow
+lpips
+pytorch-msssim
+tqdm
